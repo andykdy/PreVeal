@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BabyCowScript : MonoBehaviour
 {
-	public float speed = 10f;
+	public float speed;
 	public float slowModifier = 5f;
 	public int score = 1;
 	// Start is called before the first frame update
@@ -21,32 +21,27 @@ public class BabyCowScript : MonoBehaviour
 		if (Input.GetKey(KeyCode.Space)) {
 			gameObject.GetComponent<Rigidbody2D>().AddForce(-transform.up * slowModifier);
 		}
-		Vector2 movement = Vector2.zero;
-		if (Input.GetKey(KeyCode.W)) {
-			movement += Vector2.up;
-		} 
-		if (Input.GetKey(KeyCode.A)) {
-			movement += Vector2.left;
-		} 
-		if (Input.GetKey(KeyCode.S)) {
-			movement += Vector2.down;        
-		} 
-		if (Input.GetKey(KeyCode.D)) {
-			movement += Vector2.right;
-		}
-		movement.Normalize();
-		transform.Translate(movement * speed * Time.deltaTime);
-		if (movement.x * movement.y != 0)
+		float rot_dir = 0;
+		float cur_speed = 0;
+		if (Input.GetKey(KeyCode.S)) 
+			rot_dir = 180;
+		if (Input.GetKey(KeyCode.A)) 
+			rot_dir = 90;
+		if (Input.GetKey(KeyCode.D)) 
+			rot_dir = 270;
+		gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, Quaternion.Euler(0,0,rot_dir), 1f);
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
 		{
-			if (movement.y < 0)
-				gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0,0, 180 * (Mathf.PI -Mathf.Atan(movement.y / movement.x))/Mathf.PI); 
-			else 
-				gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0, 0, -180 * Mathf.Atan(movement.y / movement.x)/Mathf.PI);
+			cur_speed = speed * Time.deltaTime;
+			transform.Translate(Vector2.up * cur_speed);
+			
 		}
-		else 
-			gameObject.transform.GetChild(0).rotation = Quaternion.identity;
 
-		//transform.Rotate(new Vector3(0,0,1), Mathf.Atan(movement.y/movement.x));
+		foreach (FollowerCow fc in FindObjectsOfType<FollowerCow>())
+		{
+			fc.ReceiveData(gameObject.transform.rotation.eulerAngles.z, cur_speed);
+		}
+		
 		// main camera
 		var dist = (transform.position - Camera.main.transform.position).z;
 
