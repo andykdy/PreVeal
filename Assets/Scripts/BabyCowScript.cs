@@ -29,7 +29,7 @@ public class BabyCowScript : MonoBehaviour
 			rot_dir = 90;
 		if (Input.GetKey(KeyCode.D)) 
 			rot_dir = 270;
-		gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, Quaternion.Euler(0,0,rot_dir), 1f);
+		gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, Quaternion.Euler(0,0,rot_dir), 10f);
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
 		{
 			cur_speed = speed * Time.deltaTime;
