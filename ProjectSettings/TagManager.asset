@@ -9,6 +9,7 @@ TagManager:
   - mud
   - potato
   - potato_sack
+  - fence
   layers:
   - Default
   - TransparentFX

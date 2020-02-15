@@ -152,6 +152,7 @@ MonoBehaviour:
   slowModifier: 5
   bloodBomb: {fileID: 4389321583248971594, guid: 4125efbfb9b04446f8faabcb40a64dc5,
     type: 3}
+  stun_timer: 0.8
 --- !u!70 &5632904479773561024
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
