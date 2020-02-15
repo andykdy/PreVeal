@@ -86,9 +86,10 @@ public class tractor : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (col.tag == "potato_package")
+        if (col.tag == "potato_sack")
         {
             potatoes += 5;
+            Destroy(col.gameObject);
         }
         else if (col.tag == "mud")
         {
