@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Corn : MonoBehaviour
 {
-    public float speed = 30f;
+    public float speed = 40f;
     // Start is called before the first frame update
     void Start()
     {
