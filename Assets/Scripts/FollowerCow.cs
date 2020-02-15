@@ -35,7 +35,7 @@ public class FollowerCow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 player_pos = GameObject.FindObjectOfType<BabyCowScript>().transform.position;
+        Vector2 player_pos = FindObjectOfType<BabyCowScript>().transform.position;
         if (cur_state == CowState.Idle)
         {
             rgbd.transform.Translate(Vector3.down * speed *Time.deltaTime);
@@ -52,7 +52,7 @@ public class FollowerCow : MonoBehaviour
             {
                 gameObject.transform.rotation = Quaternion.RotateTowards(rgbd.transform.rotation,
                     Quaternion.Euler(0, 0, master_angle), rot_rate);
-                rgbd.transform.Translate(Vector3.up * master_speed );
+                rgbd.transform.Translate(Vector3.up * master_speed * 0.9f);
             }
             else
             {
@@ -61,7 +61,7 @@ public class FollowerCow : MonoBehaviour
                 rot_val = player_pos.x - rgbd.transform.position.x < 0 ? rot_val + 90 : rot_val - 90;
                 gameObject.transform.rotation =
                     Quaternion.RotateTowards(rgbd.transform.rotation, Quaternion.Euler(0, 0, rot_val), 5.0f);
-                rgbd.transform.Translate(Vector3.up * master_speed);
+                rgbd.transform.Translate(Vector3.up * master_speed * 0.9f);
                 
             }
         }

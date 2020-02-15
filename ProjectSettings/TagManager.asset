@@ -8,6 +8,7 @@ TagManager:
   - veal
   - mud
   - potato
+  - fence
   layers:
   - Default
   - TransparentFX

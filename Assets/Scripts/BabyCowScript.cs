@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
 public class BabyCowScript : MonoBehaviour
 {
 	public float speed;
 	public float slowModifier = 5f;
+	public float stun_timer;
 	private int my_score;
 	private int my_health;
+	private float stunned_cd;
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		my_score = 0;
 		my_health = 3;
+		stunned_cd = 0.0f;
 	}
 
 	// Update is called once per frame
@@ -32,17 +36,28 @@ public class BabyCowScript : MonoBehaviour
 			rot_dir = 90;
 		if (Input.GetKey(KeyCode.D)) 
 			rot_dir = 270;
-		gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, Quaternion.Euler(0,0,rot_dir), 10f);
-		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+		if (stunned_cd < 0.0f)
 		{
-			cur_speed = speed * Time.deltaTime;
-			transform.Translate(Vector2.up * cur_speed);
-			
-		}
+			gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, Quaternion.Euler(0,0,rot_dir), 10f);
+			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) ||
+			    Input.GetKey(KeyCode.D))
+			{
+				cur_speed = speed * Time.deltaTime;
+				transform.Translate(Vector2.up * cur_speed);
+			}
 
-		foreach (FollowerCow fc in FindObjectsOfType<FollowerCow>())
+			foreach (FollowerCow fc in FindObjectsOfType<FollowerCow>())
+			{
+				fc.ReceiveData(gameObject.transform.rotation.eulerAngles.z, cur_speed);
+			}
+		}
+		else
 		{
-			fc.ReceiveData(gameObject.transform.rotation.eulerAngles.z, cur_speed);
+			gameObject.transform.Rotate(new Vector3(0,0,10));
+			foreach (FollowerCow fc in FindObjectsOfType<FollowerCow>())
+			{
+				fc.ReceiveData(gameObject.transform.rotation.eulerAngles.z, 0);
+			}
 		}
 		
 		// main camera
@@ -57,6 +72,7 @@ public class BabyCowScript : MonoBehaviour
 			Mathf.Clamp(transform.position.x, left, right),
 			Mathf.Clamp(transform.position.y, top, bottom),
 			transform.position.z);
+		stunned_cd -= Time.deltaTime;
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
@@ -69,7 +85,14 @@ public class BabyCowScript : MonoBehaviour
 		}
 
 		if (col.tag == "mud") {
-			speed = 0.1f;
+			speed = 0.5f;
+			//gameObject.GetComponent<Rigidbody2D>().addForce(transform.down * slowModifier);
+		}
+		
+		if (col.tag == "fence")
+		{
+			stunned_cd = stun_timer;
+			
 			//gameObject.GetComponent<Rigidbody2D>().addForce(transform.down * slowModifier);
 		}
 	}

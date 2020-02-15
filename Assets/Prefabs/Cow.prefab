@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   slowModifier: 5
+  stun_timer: 0.8
 --- !u!70 &5632904479773561024
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
