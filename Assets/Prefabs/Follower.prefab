@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1315330991461317717
+--- !u!1 &2539857483247932277
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2641774400044527267}
-  - component: {fileID: 2641774400044527266}
-  - component: {fileID: 2641774400044527269}
-  - component: {fileID: 2641774400044527268}
-  - component: {fileID: 2641774400044527271}
-  m_Layer: 8
-  m_Name: Cow
-  m_TagString: cow
+  - component: {fileID: 2539857483247932276}
+  - component: {fileID: 2539857483247932275}
+  m_Layer: 0
+  m_Name: Sprite
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8072161069457386583
+--- !u!4 &2539857483247932276
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315330991461317717}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 2539857483247932277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.2, z: 1}
   m_Children: []
-  m_Father: {fileID: 2641774400044527267}
+  m_Father: {fileID: 2539857484448067596}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1726489253800439230
+--- !u!212 &2539857483247932275
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315330991461317717}
+  m_GameObject: {fileID: 2539857483247932277}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,17 +71,17 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1420c835fa30001fd83cf310f8bc8485, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9433962, g: 0.04004982, b: 0.04004982, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 3.51, y: 4.71}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2641774400044527270
+--- !u!1 &2539857484448067599
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,40 +89,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2641774400044527267}
-  - component: {fileID: 2641774400044527269}
-  - component: {fileID: 2641774400044527271}
-  - component: {fileID: 5632904479773561024}
-  m_Layer: 8
-  m_Name: Cow
+  - component: {fileID: 2539857484448067596}
+  - component: {fileID: 2539857484448067597}
+  - component: {fileID: 2539857484448067598}
+  - component: {fileID: 682263807766241351}
+  m_Layer: 0
+  m_Name: Follower
   m_TagString: cow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2641774400044527267
+--- !u!4 &2539857484448067596
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2641774400044527270}
+  m_GameObject: {fileID: 2539857484448067599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalPosition: {x: -0.052564465, y: 0.07246278, z: -2.9127052}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8072161069457386583}
+  - {fileID: 2539857483247932276}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &2641774400044527269
+--- !u!50 &2539857484448067597
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2641774400044527270}
+  m_GameObject: {fileID: 2539857484448067599}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -139,28 +136,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2641774400044527271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2641774400044527270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f87459edbfe9fcef983b16f03bde58e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  slowModifier: 5
-  score: 1
---- !u!70 &5632904479773561024
+--- !u!70 &2539857484448067598
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2641774400044527270}
+  m_GameObject: {fileID: 2539857484448067599}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -168,5 +150,20 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.3, y: 0.8}
+  m_Size: {x: 0.4, y: 0.8}
   m_Direction: 0
+--- !u!114 &682263807766241351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2539857484448067599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2315abe0fa80c43b060dd98baae2d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flock_range: 1.5
+  avoid_range: 1
+  speed: 1.5

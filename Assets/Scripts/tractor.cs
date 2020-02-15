@@ -21,7 +21,7 @@ public class tractor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeft -= Time.deltaTime;
+        timeLeft -= Time.deltaTime;      
     
         //new_potato.GetComponent<RigibBody2D>().velocty = Vector.up;
 
