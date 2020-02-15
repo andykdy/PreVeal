@@ -77,6 +77,14 @@ public class tractor : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<FollowerCow>() != null)
+        {
+            Destroy(other.gameObject);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "potato_package")
         {
@@ -88,6 +96,7 @@ public class tractor : MonoBehaviour
         }
         else if (col.tag == "veal") {
             score++;
+            Destroy(col.gameObject);
         }
     }
 }

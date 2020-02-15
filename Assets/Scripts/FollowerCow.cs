@@ -29,7 +29,7 @@ public class FollowerCow : MonoBehaviour
     {
         cur_state = CowState.Idle;
         rgbd = gameObject.GetComponent<Rigidbody2D>();
-        rot_rate = Random.Range(0.9f, 1.1f);
+        rot_rate = Random.Range(8f, 12f);
     }
 
     // Update is called once per frame
