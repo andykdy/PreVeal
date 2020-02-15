@@ -29,9 +29,9 @@ public class potato : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
+    void OnCollisionEnter2D(Collision2D col) {
 
-        if (col.tag == "cow") {
+        if (col.gameObject.tag == "cow") {
             Destroy(gameObject);
         }
 
