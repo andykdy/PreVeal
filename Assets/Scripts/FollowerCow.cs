@@ -41,6 +41,7 @@ public class FollowerCow : MonoBehaviour
             if (Vector2.Distance(player_pos, gameObject.transform.position) < flock_range)
             {
                 cur_state = CowState.Following;
+                FindObjectOfType<BabyCowScript>().AddScore(1);
             }
         }
 
@@ -60,6 +61,7 @@ public class FollowerCow : MonoBehaviour
                 gameObject.transform.rotation =
                     Quaternion.RotateTowards(rgbd.transform.rotation, Quaternion.Euler(0, 0, rot_val), 5.0f);
                 rgbd.transform.Translate(Vector3.up * master_speed/2);
+                
             }
         }
     }

@@ -7,11 +7,11 @@ public class BabyCowScript : MonoBehaviour
 {
 	public float speed;
 	public float slowModifier = 5f;
-	public int score = 1;
+	private int my_score;
 	// Start is called before the first frame update
 	void Start()
 	{
-		
+		my_score = 0;
 	}
 
 	// Update is called once per frame
@@ -29,7 +29,7 @@ public class BabyCowScript : MonoBehaviour
 			rot_dir = 90;
 		if (Input.GetKey(KeyCode.D)) 
 			rot_dir = 270;
-		gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, Quaternion.Euler(0,0,rot_dir), 1f);
+		gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, Quaternion.Euler(0,0,rot_dir), 10f);
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
 		{
 			cur_speed = speed * Time.deltaTime;
@@ -65,8 +65,8 @@ public class BabyCowScript : MonoBehaviour
 		}
 
 		if (col.tag == "potato") {
-			score--;
-			if (score == 0) {
+			my_score--;
+			if (my_score == 0) {
 				Destroy(gameObject);
 			}
 		}
@@ -76,5 +76,15 @@ public class BabyCowScript : MonoBehaviour
 		}
 
 		// TODO show game over when cow dies
+	}
+
+	public void AddScore(int val)
+	{
+		my_score += val;
+	}
+
+	public int GetScore()
+	{
+		return my_score;
 	}
 }
