@@ -1,36 +1,47 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BabyCowScript : MonoBehaviour
 {
-    public float speed = 10f;
-    public float slowModifier = 5f;
-    public int score = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public float speed;
+	public float slowModifier = 5f;
+	public int score = 1;
+	// Start is called before the first frame update
+	void Start()
+	{
+		
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        // for testing
-        if (Input.GetKey(KeyCode.Space)) {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(-transform.up * slowModifier);
-        }
+	// Update is called once per frame
+	void Update()
+	{
+		// for testing
+		if (Input.GetKey(KeyCode.Space)) {
+			gameObject.GetComponent<Rigidbody2D>().AddForce(-transform.up * slowModifier);
+		}
+		float rot_dir = 0;
+		float cur_speed = 0;
+		if (Input.GetKey(KeyCode.S)) 
+			rot_dir = 180;
+		if (Input.GetKey(KeyCode.A)) 
+			rot_dir = 90;
+		if (Input.GetKey(KeyCode.D)) 
+			rot_dir = 270;
+		gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, Quaternion.Euler(0,0,rot_dir), 1f);
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+		{
+			cur_speed = speed * Time.deltaTime;
+			transform.Translate(Vector2.up * cur_speed);
+			
+		}
 
-        if (Input.GetKey(KeyCode.W)) {
-            transform.Translate (Vector2.up * speed * Time.deltaTime);
-        } else if (Input.GetKey(KeyCode.A)) {
-            transform.Translate (Vector2.left * speed * Time.deltaTime);
-        } else if (Input.GetKey(KeyCode.S)) {
-            transform.Translate (Vector2.down * speed * Time.deltaTime);
-        } else if (Input.GetKey(KeyCode.D)) {
-            transform.Translate (Vector2.right * speed * Time.deltaTime);
-        }
-
+		foreach (FollowerCow fc in FindObjectsOfType<FollowerCow>())
+		{
+			fc.ReceiveData(gameObject.transform.rotation.eulerAngles.z, cur_speed);
+		}
+		
 		// main camera
 		var dist = (transform.position - Camera.main.transform.position).z;
 
@@ -43,27 +54,27 @@ public class BabyCowScript : MonoBehaviour
 			Mathf.Clamp(transform.position.x, left, right),
 			Mathf.Clamp(transform.position.y, top, bottom),
 			transform.position.z);
-    }
+	}
 
-    void onTriggerEnter2D(Collider2D col) {
-        // cows
-        if (col.tag == "cow") {
-            // TODO solve the Cow Packing Problem
-            // we should increment the score when we add a cow
-            // with a maximum threshold
-        }
+	void onTriggerEnter2D(Collider2D col) {
+		// cows
+		if (col.tag == "cow") {
+			// TODO solve the Cow Packing Problem
+			// we should increment the score when we add a cow
+			// with a maximum threshold
+		}
 
-        if (col.tag == "potato") {
-            score--;
-            if (score == 0) {
-                Destroy(gameObject);
-            }
-        }
+		if (col.tag == "potato") {
+			score--;
+			if (score == 0) {
+				Destroy(gameObject);
+			}
+		}
 
-        if (col.tag == "mud") {
-            // gameObject.AddComponent<Rigidbody2D>().addForce(transform.down * slowModifier);
-        }
+		if (col.tag == "mud") {
+			// gameObject.AddComponent<Rigidbody2D>().addForce(transform.down * slowModifier);
+		}
 
-        // TODO show game over when cow dies
-    }
+		// TODO show game over when cow dies
+	}
 }
