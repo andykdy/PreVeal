@@ -9,6 +9,7 @@ public class BabyCowScript : MonoBehaviour
 	public float slowModifier = 5f;
 	private int my_score;
 	private int my_health;
+	public ParticleSystem bloodBomb;
 
 	// Start is called before the first frame update
 	void Start()
@@ -63,8 +64,10 @@ public class BabyCowScript : MonoBehaviour
 		if (col.tag == "potato") {
 			my_health--;
 			if (my_health == 0) {
+				ParticleSystem explosion = Instantiate(bloodBomb);
+            	explosion.transform.position = transform.position;
 				// TODO show game over when cow dies
-				Destroy(gameObject);
+				//Destroy(gameObject);
 			}
 		}
 

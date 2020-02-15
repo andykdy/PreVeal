@@ -168,3 +168,5 @@ MonoBehaviour:
   avoid_range: 1
   speed: 1.5
   veal: {fileID: 3505514825735419924, guid: 749623fd5eca74443b4605317d65494f, type: 3}
+  bloodBomb: {fileID: 4389321583248971594, guid: 4125efbfb9b04446f8faabcb40a64dc5,
+    type: 3}

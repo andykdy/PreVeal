@@ -23,6 +23,7 @@ public class FollowerCow : MonoBehaviour
     private float master_speed;
     private float rot_rate;
     public GameObject veal;
+    public ParticleSystem bloodBomb;
     
     // Start is called before the first frame update
     void Start()
@@ -75,7 +76,8 @@ public class FollowerCow : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "potato") {
-            //DO PARTICLE EFFECT
+            ParticleSystem explosion = Instantiate(bloodBomb);
+            explosion.transform.position = transform.position;
             Instantiate(veal, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
