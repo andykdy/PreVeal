@@ -21,10 +21,6 @@ public class BabyCowScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		// for testing
-		if (Input.GetKey(KeyCode.Space)) {
-			gameObject.GetComponent<Rigidbody2D>().AddForce(-transform.up * slowModifier);
-		}
 		float rot_dir = 0;
 		float cur_speed = 0;
 		if (Input.GetKey(KeyCode.S)) 
