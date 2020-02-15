@@ -22,13 +22,14 @@ public class FollowerCow : MonoBehaviour
     private float master_angle;
     private float master_speed;
     private float rot_rate;
+    public GameObject veal;
     
     // Start is called before the first frame update
     void Start()
     {
         cur_state = CowState.Idle;
         rgbd = gameObject.GetComponent<Rigidbody2D>();
-        rot_rate = Random.Range(0.9f, 1.1f);
+        rot_rate = Random.Range(8f, 12f);
     }
 
     // Update is called once per frame
@@ -60,7 +61,7 @@ public class FollowerCow : MonoBehaviour
                 rot_val = player_pos.x - rgbd.transform.position.x < 0 ? rot_val + 90 : rot_val - 90;
                 gameObject.transform.rotation =
                     Quaternion.RotateTowards(rgbd.transform.rotation, Quaternion.Euler(0, 0, rot_val), 5.0f);
-                rgbd.transform.Translate(Vector3.up * master_speed/2);
+                rgbd.transform.Translate(Vector3.up * master_speed);
                 
             }
         }
@@ -71,6 +72,13 @@ public class FollowerCow : MonoBehaviour
         master_angle = rot_mag;
         master_speed = given_speed;
     }
-    
+
+    void OnTriggerEnter2D(Collider2D col) {
+        if (col.tag == "potato") {
+            //DO PARTICLE EFFECT
+            Instantiate(veal, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
 }
 
