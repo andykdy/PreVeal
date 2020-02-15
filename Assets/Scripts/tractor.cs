@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class tractor : MonoBehaviour
 {
-    public float speed = 0f;
-    public int potatos = 5;
-    public int score = 0;
+    public float speed;
+    public int potatoes;
+    public int score;
     public GameObject potato;
-    
+    public float timeLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,10 @@ public class tractor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        timeLeft -= Time.deltaTime;
+        Debug.Log(timeLeft);
+      
+    
         //new_potato.GetComponent<RigibBody2D>().velocty = Vector.up;
 
         //getting position with which button
@@ -50,12 +53,7 @@ public class tractor : MonoBehaviour
             transform.Translate(movement);
 
         }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            //put whatever gameObject varible (banana) in the scene at the postion of current gameObject (monkey (transform.pos))
-            Instantiate(potato, transform.position, Quaternion.identity);
-        }
+        
 
         //bounds
         var dist = (transform.position - Camera.main.transform.position).z;
@@ -69,17 +67,28 @@ public class tractor : MonoBehaviour
             Mathf.Clamp(transform.position.x, left, right),
             Mathf.Clamp(transform.position.y, top, bottom),
             transform.position.z);
+
+        
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && potatoes > 0 && timeLeft < 0)
+        {
+            //put whatever gameObject varible (banana) in the scene at the postion of current gameObject (monkey (transform.pos))
+            Instantiate(potato, transform.position, Quaternion.identity);
+            potatoes -= 1;
+            timeLeft = 0.5f;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "potato_package")
         {
             //TODO
-            potatos += 5;
+            potatoes += 5;
         }
         else if (col.tag == "mud")
         {
             //todo: extend cooldown
+            potatoes -= 3;
         }
         else if (col.tag == "veal") {
             //todo: destory veal object

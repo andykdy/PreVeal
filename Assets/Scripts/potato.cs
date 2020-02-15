@@ -36,4 +36,10 @@ public class potato : MonoBehaviour
         }
 
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
 }
