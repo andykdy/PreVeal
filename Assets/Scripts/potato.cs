@@ -18,20 +18,13 @@ public class potato : MonoBehaviour
         Vector2 position = transform.position;
         position = new Vector2(position.x, position.y * speed * Time.deltaTime);
 
-        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-        if (transform.position.x > max.x) {
-            Destroy(gameObject);
-
-        }
-
         Vector2 movement = new Vector2(0, 1) * speed * Time.deltaTime;
         transform.Translate(movement);
 
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
-
-        if (col.tag == "cow") {
+    void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.tag == "cow") {
             Destroy(gameObject);
         }
 

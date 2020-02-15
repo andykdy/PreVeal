@@ -22,8 +22,6 @@ public class tractor : MonoBehaviour
     void Update()
     {
         timeLeft -= Time.deltaTime;
-        Debug.Log(timeLeft);
-      
     
         //new_potato.GetComponent<RigibBody2D>().velocty = Vector.up;
 
