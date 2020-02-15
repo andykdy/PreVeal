@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - cow
+  - veal
+  - mud
+  - potato
   layers:
   - Default
   - TransparentFX

@@ -5,15 +5,17 @@ using UnityEngine;
 public class tractor : MonoBehaviour
 {
     public float speed;
-    public int potatoes;
-    public int score;
     public GameObject potato;
     public float timeLeft;
+
+    private int potatoes;
+    private int score;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        potatoes = 3;
+        score = 0;
     }
 
 
@@ -66,11 +68,9 @@ public class tractor : MonoBehaviour
             Mathf.Clamp(transform.position.y, top, bottom),
             transform.position.z);
 
-        
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && potatoes > 0 && timeLeft < 0)
         {
-            //put whatever gameObject varible (banana) in the scene at the postion of current gameObject (monkey (transform.pos))
             Instantiate(potato, transform.position, Quaternion.identity);
             potatoes -= 1;
             timeLeft = 0.5f;
@@ -80,18 +80,14 @@ public class tractor : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "potato_package")
         {
-            //TODO
             potatoes += 5;
         }
         else if (col.tag == "mud")
         {
-            //todo: extend cooldown
             potatoes -= 3;
         }
         else if (col.tag == "veal") {
-            //todo: destory veal object
             score++;
         }
-
     }
 }

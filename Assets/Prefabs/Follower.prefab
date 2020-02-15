@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2315abe0fa80c43b060dd98baae2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flock_range: 1.5
+  flock_range: 1
   avoid_range: 1
   speed: 1.5
+  veal: {fileID: 3505514825735419924, guid: 749623fd5eca74443b4605317d65494f, type: 3}

@@ -8,10 +8,13 @@ public class BabyCowScript : MonoBehaviour
 	public float speed;
 	public float slowModifier = 5f;
 	private int my_score;
+	private int my_health;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		my_score = 0;
+		my_health = 3;
 	}
 
 	// Update is called once per frame
@@ -56,26 +59,25 @@ public class BabyCowScript : MonoBehaviour
 			transform.position.z);
 	}
 
-	void onTriggerEnter2D(Collider2D col) {
-		// cows
-		if (col.tag == "cow") {
-			// TODO solve the Cow Packing Problem
-			// we should increment the score when we add a cow
-			// with a maximum threshold
-		}
-
+	void OnTriggerEnter2D(Collider2D col) {
 		if (col.tag == "potato") {
-			my_score--;
-			if (my_score == 0) {
+			my_health--;
+			if (my_health == 0) {
+				// TODO show game over when cow dies
 				Destroy(gameObject);
 			}
 		}
 
 		if (col.tag == "mud") {
-			// gameObject.AddComponent<Rigidbody2D>().addForce(transform.down * slowModifier);
+			speed = 0.1f;
+			//gameObject.GetComponent<Rigidbody2D>().addForce(transform.down * slowModifier);
 		}
+	}
 
-		// TODO show game over when cow dies
+	void OnTriggerExit2D(Collider2D col) {
+		if (col.tag == "mud") {
+			speed = 5f;
+		}
 	}
 
 	public void AddScore(int val)
