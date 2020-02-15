@@ -5,16 +5,12 @@ using UnityEngine;
 public class tractor : MonoBehaviour
 {
     public float speed;
-    public GameObject potato;
-    public float timeLeft;
-
-    private int potatoes;
+    public GameObject PickupManager;
     private int score;
 
     // Start is called before the first frame update
     void Start()
     {
-        potatoes = 3;
         score = 0;
     }
 
@@ -23,8 +19,6 @@ public class tractor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeft -= Time.deltaTime;      
-    
         //new_potato.GetComponent<RigibBody2D>().velocty = Vector.up;
 
         //getting position with which button
@@ -67,14 +61,6 @@ public class tractor : MonoBehaviour
             Mathf.Clamp(transform.position.x, left, right),
             Mathf.Clamp(transform.position.y, top, bottom),
             transform.position.z);
-
-
-        if (Input.GetKeyDown(KeyCode.UpArrow) && potatoes > 0 && timeLeft < 0)
-        {
-            Instantiate(potato, transform.position, Quaternion.identity);
-            potatoes -= 1;
-            timeLeft = 0.5f;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -88,12 +74,11 @@ public class tractor : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "potato_sack")
         {
-            potatoes += 5;
-            Destroy(col.gameObject);
+            // TODO increment ammo
         }
         else if (col.tag == "mud")
         {
-            potatoes -= 3;
+            // TODO decrement ammo
         }
         else if (col.tag == "veal") {
             score++;
