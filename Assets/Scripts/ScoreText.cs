@@ -16,7 +16,6 @@ public class ScoreText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Foobar");
         BabyCowScript player = FindObjectOfType<BabyCowScript>();
         my_score.text = "Score: " + player.GetScore();
     }
