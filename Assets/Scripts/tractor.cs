@@ -81,6 +81,13 @@ public class tractor : MonoBehaviour
     {
         if (other.gameObject.GetComponent<FollowerCow>() != null)
         {
+            FollowerCow cow = other.gameObject.GetComponent<FollowerCow>();
+            ParticleSystem explosion = Instantiate(cow.bloodBomb);
+            explosion.transform.position = transform.position;
+            if (cow.GetState() == FollowerCow.CowState.Following)
+            {
+                FindObjectOfType<BabyCowScript>().AddScore(-1);
+            }
             Destroy(other.gameObject);
         }
     }
@@ -93,7 +100,14 @@ public class tractor : MonoBehaviour
         }
         else if (col.tag == "mud")
         {
-            potatoes -= 3;
+            if (potatoes > 2) {
+                potatoes -= 3;
+            }
+            else
+            {
+                potatoes = 0;
+            }
+            
         }
         else if (col.tag == "veal") {
             score++;
