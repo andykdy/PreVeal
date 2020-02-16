@@ -11,10 +11,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject sack_prefab;
 
     [SerializeField] private GameObject cow_prefab;
+    [SerializeField] private GameObject finish_prefab;
     public int current_lvl; // TODO: Really weird??
     private float spawn_cooldown;
     private Queue<Wave> waves;
-
+    private bool isGameOver;
     struct Wave
     {
         private float xpos;
@@ -54,6 +55,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isGameOver = false;
         spawn_cooldown = 0.0f;
         switch (current_lvl)
         {
@@ -71,7 +73,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (waves.Count > 0 && spawn_cooldown < 0.0f)
+        if (waves.Count > 0 && spawn_cooldown < 0.0f && !isGameOver)
         {
             Wave current_wave = waves.Dequeue();
             Instantiate(current_wave.GetObject(), new Vector3(current_wave.GetPosition(), 6, -10),
@@ -171,10 +173,20 @@ public class SpawnManager : MonoBehaviour
         waves.Enqueue(new Wave(2.75f,0,fence_prefab,1));
         
         
+        
+        
+        
+        
+        waves.Enqueue(new Wave(0,0,finish_prefab,0));
     }
     
     void loadLevel2()
     {
         waves = new Queue<Wave>();
+    }
+
+    public void EndGame()
+    {
+        isGameOver = true;
     }
 }
