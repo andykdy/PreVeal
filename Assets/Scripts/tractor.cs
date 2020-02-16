@@ -81,6 +81,8 @@ public class tractor : MonoBehaviour
     {
         if (other.gameObject.GetComponent<FollowerCow>() != null)
         {
+            ParticleSystem explosion = Instantiate(other.gameObject.GetComponent<FollowerCow>().bloodBomb);
+            explosion.transform.position = transform.position;
             Destroy(other.gameObject);
         }
     }

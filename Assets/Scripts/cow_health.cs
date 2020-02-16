@@ -18,5 +18,7 @@ public class cow_health : MonoBehaviour
         BabyCowScript player = FindObjectOfType<BabyCowScript>();
         if (player != null)
             my_text.text = "" + player.GetHealth();
+        else
+            my_text.text = "0";
     }
 }
