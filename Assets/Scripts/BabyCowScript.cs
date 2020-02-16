@@ -93,7 +93,12 @@ public class BabyCowScript : MonoBehaviour
             	gameOver.ShowButtons();
 
 				// TODO show game over when cow dies
-				//Destroy(gameObject);
+				GameObject[] cows = GameObject.FindGameObjectsWithTag("follower_cow");
+				foreach (GameObject cow in cows) {
+					Destroy(cow);
+				}
+
+				Destroy(gameObject);
 			}
 		}
 
