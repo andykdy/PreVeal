@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class GameOver : MonoBehaviour
 	}
 	
     public void Restart() {
-    	Application.LoadLevel("MainScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 	public void MainMenu() {
