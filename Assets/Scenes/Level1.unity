@@ -302,7 +302,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &947568502
 PrefabInstance:
@@ -349,7 +349,7 @@ PrefabInstance:
     - target: {fileID: 7641138705753883827, guid: 17cd0ab6e711d45e0a4060de1ecd7236,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7641138705753883827, guid: 17cd0ab6e711d45e0a4060de1ecd7236,
         type: 3}
@@ -423,6 +423,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17cd0ab6e711d45e0a4060de1ecd7236, type: 3}
+--- !u!1 &947568503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7641138706719564874, guid: 17cd0ab6e711d45e0a4060de1ecd7236,
+    type: 3}
+  m_PrefabInstance: {fileID: 947568502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1429670302
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 947568503}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1429670305
