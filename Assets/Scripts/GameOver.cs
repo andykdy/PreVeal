@@ -35,20 +35,38 @@ public class GameOver : MonoBehaviour
 		}
 	}
 
-	public void ShowButtons() {
-		isInputEnabled = false;
-		panel.SetActive(true);
-		game_object_text.SetActive(true);
-		//show each button
-		foreach (var b in buttons)
-		{
-			b.gameObject.SetActive(true);
-		}
-		Animation anim = gameOver.GetComponent<Animation>();
-		anim.Play("game_over");
-	}
+    public void CowWins()
+    {
+        isInputEnabled = false;
+        panel.SetActive(true);
+        game_object_text.GetComponent<Text>().text = "Cow wins!";
+        game_object_text.SetActive(true);
+        //show each button
+        foreach (var b in buttons)
+        {
+            b.gameObject.SetActive(true);
+        }
+        Animation anim = gameOver.GetComponent<Animation>();
+        anim.Play("game_over");
+    }
 
-	public bool isShown() {
+    public void FarmerWins()
+    {
+        isInputEnabled = false;
+        panel.SetActive(true);
+        game_object_text.GetComponent<Text>().text = "Farmer wins!";
+        game_object_text.SetActive(true);
+        //show each button
+        foreach (var b in buttons)
+        {
+            b.gameObject.SetActive(true);
+        }
+        Animation anim = gameOver.GetComponent<Animation>();
+        anim.Play("game_over");
+    }
+
+
+    public bool isShown() {
 		return panel.activeSelf && game_object_text.activeSelf;
 	}
 	
