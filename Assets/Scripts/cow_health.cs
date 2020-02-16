@@ -23,7 +23,7 @@ public class cow_health : MonoBehaviour
             my_text.text = "0";
             var gameOver = FindObjectOfType<GameOver>();
             if (!gameOver.isShown()) {
-                gameOver.ShowButtons();
+                gameOver.FarmerWins();
             }
         }
     }
