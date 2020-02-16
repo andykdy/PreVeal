@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     public void StartGame()
     {
-        Application.LoadLevel("MainScene");
+        Application.LoadLevel("Level1");
     }
 
     public void LevelSelect()
