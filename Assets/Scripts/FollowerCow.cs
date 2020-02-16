@@ -10,7 +10,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class FollowerCow : MonoBehaviour
 {
-    enum CowState { Idle, Following}
+    public enum CowState { Idle, Following}
 
     public float flock_range;
     public float avoid_range;
@@ -78,9 +78,18 @@ public class FollowerCow : MonoBehaviour
         if (col.tag == "potato") {
             ParticleSystem explosion = Instantiate(bloodBomb);
             explosion.transform.position = transform.position;
+            if (cur_state == CowState.Following)
+            {
+                FindObjectOfType<BabyCowScript>().AddScore(-1);
+            }
             Instantiate(veal, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+    }
+
+    public CowState GetState()
+    {
+        return cur_state;
     }
 }
 

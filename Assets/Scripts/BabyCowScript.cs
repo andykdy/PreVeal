@@ -29,7 +29,20 @@ public class BabyCowScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		float rot_dir = 0;
+        if (my_health == 0)
+        {
+            var gameOver = FindObjectOfType<GameOver>();
+            gameOver.ShowButtons();
+
+            GameObject[] cows = GameObject.FindGameObjectsWithTag("follower_cow");
+            foreach (GameObject cow in cows)
+            {
+                Destroy(cow);
+            }
+
+            Destroy(gameObject);
+        }
+        float rot_dir = 0;
 		float cur_speed = 0;
 		if (Input.GetKey(KeyCode.S)) 
 			rot_dir = 180;
@@ -48,7 +61,6 @@ public class BabyCowScript : MonoBehaviour
 			}
 
 			Vector2 rot_vec = gameObject.transform.up;
-			Debug.Log(rot_vec);
 			foreach (FollowerCow fc in FindObjectsOfType<FollowerCow>())
 			{
 				float angle = Vector2.Angle(rot_vec, fc.transform.position - gameObject.transform.position);
@@ -77,7 +89,7 @@ public class BabyCowScript : MonoBehaviour
 
 		transform.position = new Vector3(
 			Mathf.Clamp(transform.position.x, left, right),
-			Mathf.Clamp(transform.position.y, top, bottom),
+			Mathf.Clamp(transform.position.y, top + 1, bottom),
 			transform.position.z);
 		stunned_cd -= Time.deltaTime;
 	}
@@ -85,21 +97,6 @@ public class BabyCowScript : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.tag == "potato") {
 			my_health--;
-			if (my_health == 0) {
-				ParticleSystem explosion = Instantiate(bloodBomb);
-            	explosion.transform.position = transform.position;
-
-            	var gameOver = FindObjectOfType<GameOver>();
-            	gameOver.ShowButtons();
-
-				// TODO show game over when cow dies
-				GameObject[] cows = GameObject.FindGameObjectsWithTag("follower_cow");
-				foreach (GameObject cow in cows) {
-					Destroy(cow);
-				}
-
-				Destroy(gameObject);
-			}
 		}
 
 		if (col.tag == "mud") {
