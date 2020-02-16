@@ -61,7 +61,6 @@ public class BabyCowScript : MonoBehaviour
 			}
 
 			Vector2 rot_vec = gameObject.transform.up;
-			Debug.Log(rot_vec);
 			foreach (FollowerCow fc in FindObjectsOfType<FollowerCow>())
 			{
 				float angle = Vector2.Angle(rot_vec, fc.transform.position - gameObject.transform.position);
