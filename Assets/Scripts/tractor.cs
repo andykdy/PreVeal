@@ -100,4 +100,14 @@ public class tractor : MonoBehaviour
             Destroy(col.gameObject);
         }
     }
+
+    public int getScore() 
+    {
+        return score;
+    }
+
+    public int getPotatoCount() 
+    {
+        return potatoes;
+    }
 }

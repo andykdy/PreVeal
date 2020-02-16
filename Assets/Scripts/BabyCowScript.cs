@@ -121,4 +121,14 @@ public class BabyCowScript : MonoBehaviour
 	{
 		return my_score;
 	}
+
+	public void AddHealth(int val)
+	{
+		my_health += val;
+	}
+
+	public int GetHealth()
+	{
+		return my_health;
+	}
 }
