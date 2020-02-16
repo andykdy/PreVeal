@@ -37,36 +37,34 @@ public class FollowerCow : MonoBehaviour
     void Update()
     {
         Vector2 player_pos = FindObjectOfType<BabyCowScript>().transform.position;
-        if (player_pos != null) {
-            if (cur_state == CowState.Idle)
+        if (cur_state == CowState.Idle)
+        {
+            Vector2 pos = transform.position;
+            transform.position = new Vector3(pos.x, pos.y - speed * Time.deltaTime, -3);
+            if (Vector2.Distance(player_pos, gameObject.transform.position) < flock_range)
             {
-                Vector2 pos = transform.position;
-                transform.position = new Vector3(pos.x, pos.y - speed * Time.deltaTime, -3);
-                if (Vector2.Distance(player_pos, gameObject.transform.position) < flock_range)
-                {
-                    cur_state = CowState.Following;
-                    FindObjectOfType<BabyCowScript>().AddScore(1);
-                }
+                cur_state = CowState.Following;
+                FindObjectOfType<BabyCowScript>().AddScore(1);
             }
+        }
 
-            if (cur_state == CowState.Following)
+        if (cur_state == CowState.Following)
+        {
+            if (Vector2.Distance(player_pos, gameObject.transform.position) < flock_range)
             {
-                if (Vector2.Distance(player_pos, gameObject.transform.position) < flock_range)
-                {
-                    gameObject.transform.rotation = Quaternion.RotateTowards(rgbd.transform.rotation,
-                        Quaternion.Euler(0, 0, master_angle), rot_rate);
-                    rgbd.transform.Translate(Vector3.up * master_speed);
-                }
-                else
-                {
-                    float rot_val = 180 * Mathf.Atan((player_pos.y - rgbd.transform.position.y) /
-                                               (player_pos.x - rgbd.transform.position.x)) / Mathf.PI;
-                    rot_val = player_pos.x - rgbd.transform.position.x < 0 ? rot_val + 90 : rot_val - 90;
-                    gameObject.transform.rotation =
-                        Quaternion.RotateTowards(rgbd.transform.rotation, Quaternion.Euler(0, 0, rot_val), 5.0f);
-                    rgbd.transform.Translate(Vector3.up * master_speed);
-                    
-                }
+                gameObject.transform.rotation = Quaternion.RotateTowards(rgbd.transform.rotation,
+                    Quaternion.Euler(0, 0, master_angle), rot_rate);
+                rgbd.transform.Translate(Vector3.up * master_speed);
+            }
+            else
+            {
+                float rot_val = 180 * Mathf.Atan((player_pos.y - rgbd.transform.position.y) /
+                                           (player_pos.x - rgbd.transform.position.x)) / Mathf.PI;
+                rot_val = player_pos.x - rgbd.transform.position.x < 0 ? rot_val + 90 : rot_val - 90;
+                gameObject.transform.rotation =
+                    Quaternion.RotateTowards(rgbd.transform.rotation, Quaternion.Euler(0, 0, rot_val), 5.0f);
+                rgbd.transform.Translate(Vector3.up * master_speed);
+                
             }
         }
     }

@@ -51,4 +51,6 @@ MonoBehaviour:
     type: 3}
   cow_prefab: {fileID: 2539857484448067599, guid: a87ee4851e4a3e64dab02faff5997c54,
     type: 3}
+  finish_prefab: {fileID: 1703076744097083313, guid: b08ca4d4e4c37e043be0e10b6549f77f,
+    type: 3}
   current_lvl: 0
