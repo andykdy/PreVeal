@@ -77,7 +77,7 @@ public class BabyCowScript : MonoBehaviour
 
 		transform.position = new Vector3(
 			Mathf.Clamp(transform.position.x, left, right),
-			Mathf.Clamp(transform.position.y, top, bottom),
+			Mathf.Clamp(transform.position.y, top + 1, bottom),
 			transform.position.z);
 		stunned_cd -= Time.deltaTime;
 	}
@@ -85,10 +85,9 @@ public class BabyCowScript : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.tag == "potato") {
 			my_health--;
-			if (my_health == 0) {
-				ParticleSystem explosion = Instantiate(bloodBomb);
-            	explosion.transform.position = transform.position;
-
+            ParticleSystem explosion = Instantiate(bloodBomb);
+            explosion.transform.position = transform.position;
+            if (my_health == 0) {
             	var gameOver = FindObjectOfType<GameOver>();
             	gameOver.ShowButtons();
 
