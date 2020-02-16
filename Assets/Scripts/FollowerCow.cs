@@ -53,7 +53,7 @@ public class FollowerCow : MonoBehaviour
             {
                 gameObject.transform.rotation = Quaternion.RotateTowards(rgbd.transform.rotation,
                     Quaternion.Euler(0, 0, master_angle), rot_rate);
-                rgbd.transform.Translate(Vector3.up * master_speed * 0.9f);
+                rgbd.transform.Translate(Vector3.up * master_speed);
             }
             else
             {
@@ -62,7 +62,7 @@ public class FollowerCow : MonoBehaviour
                 rot_val = player_pos.x - rgbd.transform.position.x < 0 ? rot_val + 90 : rot_val - 90;
                 gameObject.transform.rotation =
                     Quaternion.RotateTowards(rgbd.transform.rotation, Quaternion.Euler(0, 0, rot_val), 5.0f);
-                rgbd.transform.Translate(Vector3.up * master_speed * 0.9f);
+                rgbd.transform.Translate(Vector3.up * master_speed);
                 
             }
         }
