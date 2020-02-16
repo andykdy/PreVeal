@@ -33,6 +33,7 @@ public class BabyCowScript : MonoBehaviour
         if (my_health == 0 && !gameOver.isShown())
         {
             gameOver.ShowButtons();
+            FindObjectOfType<SpawnManager>().EndGame();
 
             SpawnManager spawner = FindObjectOfType<SpawnManager>();
             if (spawner != null) {
