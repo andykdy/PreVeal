@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Transactions;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BabyCowScript : MonoBehaviour
 {
@@ -110,5 +111,15 @@ public class BabyCowScript : MonoBehaviour
 	public int GetScore()
 	{
 		return my_score;
+	}
+
+	public void AddHealth(int val)
+	{
+		my_health += val;
+	}
+
+	public int GetHealth()
+	{
+		return my_health;
 	}
 }
