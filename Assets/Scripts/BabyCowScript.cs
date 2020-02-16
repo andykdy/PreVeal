@@ -88,6 +88,10 @@ public class BabyCowScript : MonoBehaviour
 			if (my_health == 0) {
 				ParticleSystem explosion = Instantiate(bloodBomb);
             	explosion.transform.position = transform.position;
+
+            	var gameOver = FindObjectOfType<GameOver>();
+            	gameOver.ShowButtons();
+
 				// TODO show game over when cow dies
 				//Destroy(gameObject);
 			}
