@@ -39,7 +39,8 @@ public class FollowerCow : MonoBehaviour
         Vector2 player_pos = FindObjectOfType<BabyCowScript>().transform.position;
         if (cur_state == CowState.Idle)
         {
-            rgbd.transform.Translate(Vector3.down * speed *Time.deltaTime);
+            Vector2 pos = transform.position;
+            transform.position = new Vector3(pos.x, pos.y - speed * Time.deltaTime, -3);
             if (Vector2.Distance(player_pos, gameObject.transform.position) < flock_range)
             {
                 cur_state = CowState.Following;
