@@ -12,6 +12,7 @@ public class tractor : MonoBehaviour
     private int score;
     private float kill_down = -1f;
     private float drag_time = 0f;
+    public ParticleSystem potatoBomb;
 
     // Start is called before the first frame update
     void Start()
@@ -118,6 +119,8 @@ public class tractor : MonoBehaviour
             {
                 potatoes = 0;
             }
+            ParticleSystem explosion = Instantiate(potatoBomb);
+            explosion.transform.position = transform.position;
             Destroy(col.gameObject);
             
         }
