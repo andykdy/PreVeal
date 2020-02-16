@@ -199,7 +199,6 @@ public class SpawnManager : MonoBehaviour
         
         waves.Enqueue(new Wave(0,0,sack_prefab,1.5f));
         
-        
         waves.Enqueue(new Wave(2.75f,0,fence_prefab,0));
         waves.Enqueue(new Wave(1.4f,0,fence_prefab,0));
         waves.Enqueue(new Wave(0.0f, 0, fence_prefab, 0));
@@ -221,8 +220,8 @@ public class SpawnManager : MonoBehaviour
         waves.Enqueue(new Wave(1.5f, 180, cow_prefab, 0));
         waves.Enqueue(new Wave(2.5f,0,sack_prefab,1));
         
+
         waves.Enqueue(new Wave(-1.5f, 90, cow_prefab, 2));
-        
         waves.Enqueue(new Wave(-2.5f,0,fence_prefab,0));
         waves.Enqueue(new Wave(-1.9f,0,sack_prefab,2));
         waves.Enqueue(new Wave(-1.35f,0,fence_prefab,1.5f));
