@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreText : MonoBehaviour
+public class cow_count : MonoBehaviour
 {
-    private Text my_score;
+    private Text my_text;
     // Start is called before the first frame update
     void Start()
     {
-        my_score = gameObject.GetComponent<Text>();
-        my_score.text = "Score: 0";
+        my_text = gameObject.GetComponent<Text>();
+        my_text.text = "0";
     }
 
     // Update is called once per frame
     void Update()
     {
         BabyCowScript player = FindObjectOfType<BabyCowScript>();
-        my_score.text = "Score: " + player.GetScore();
+        my_text.text = "" + player.GetScore();
     }
 }

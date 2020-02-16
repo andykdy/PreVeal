@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Transactions;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class BabyCowScript : MonoBehaviour
 {
@@ -43,9 +47,15 @@ public class BabyCowScript : MonoBehaviour
 				transform.Translate(Vector2.up * cur_speed);
 			}
 
+			Vector2 rot_vec = gameObject.transform.up;
+			Debug.Log(rot_vec);
 			foreach (FollowerCow fc in FindObjectsOfType<FollowerCow>())
 			{
-				fc.ReceiveData(gameObject.transform.rotation.eulerAngles.z, cur_speed);
+				float angle = Vector2.Angle(rot_vec, fc.transform.position - gameObject.transform.position);
+				if (angle< 90)
+					fc.ReceiveData(gameObject.transform.rotation.eulerAngles.z, cur_speed * 0.5f);
+				else
+					fc.ReceiveData(gameObject.transform.rotation.eulerAngles.z, cur_speed);
 			}
 		}
 		else
@@ -110,5 +120,15 @@ public class BabyCowScript : MonoBehaviour
 	public int GetScore()
 	{
 		return my_score;
+	}
+
+	public void AddHealth(int val)
+	{
+		my_health += val;
+	}
+
+	public int GetHealth()
+	{
+		return my_health;
 	}
 }
