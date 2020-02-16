@@ -17,6 +17,7 @@ public class potato_count : MonoBehaviour
     void Update()
     {
         tractor t = FindObjectOfType<tractor>();
-        my_text.text = "" + t.getPotatoCount();
+        if (t != null)
+            my_text.text = "" + t.getPotatoCount();
     }
 }

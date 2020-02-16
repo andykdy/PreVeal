@@ -17,6 +17,7 @@ public class cow_count : MonoBehaviour
     void Update()
     {
         BabyCowScript player = FindObjectOfType<BabyCowScript>();
-        my_text.text = "" + player.GetScore();
+        if (player != null)
+            my_text.text = "" + player.GetScore();
     }
 }
