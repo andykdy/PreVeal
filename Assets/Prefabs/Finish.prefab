@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1194292558406593445}
   - component: {fileID: 1606917477244309681}
   - component: {fileID: 90131721198133084}
-  - component: {fileID: 6868676500345412327}
+  - component: {fileID: 2095494589975734938}
   m_Layer: 0
   m_Name: Finish
-  m_TagString: Untagged
+  m_TagString: finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.24, y: 0.86}
   m_EdgeRadius: 0
---- !u!114 &6868676500345412327
+--- !u!114 &2095494589975734938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

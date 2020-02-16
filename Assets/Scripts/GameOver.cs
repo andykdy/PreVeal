@@ -39,6 +39,7 @@ public class GameOver : MonoBehaviour
     {
         isInputEnabled = false;
         panel.SetActive(true);
+        game_object_text.GetComponent<Text>().text = "Cow wins!";
         game_object_text.SetActive(true);
         //show each button
         foreach (var b in buttons)
@@ -53,7 +54,7 @@ public class GameOver : MonoBehaviour
     {
         isInputEnabled = false;
         panel.SetActive(true);
-        game_object_text.text = "Farmer Wins";
+        game_object_text.GetComponent<Text>().text = "Farmer wins!";
         game_object_text.SetActive(true);
         //show each button
         foreach (var b in buttons)
