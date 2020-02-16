@@ -81,8 +81,13 @@ public class tractor : MonoBehaviour
     {
         if (other.gameObject.GetComponent<FollowerCow>() != null)
         {
-            ParticleSystem explosion = Instantiate(other.gameObject.GetComponent<FollowerCow>().bloodBomb);
+            FollowerCow cow = other.gameObject.GetComponent<FollowerCow>();
+            ParticleSystem explosion = Instantiate(cow.bloodBomb);
             explosion.transform.position = transform.position;
+            if (cow.GetState() == FollowerCow.CowState.Following)
+            {
+                FindObjectOfType<BabyCowScript>().AddScore(-1);
+            }
             Destroy(other.gameObject);
         }
     }
