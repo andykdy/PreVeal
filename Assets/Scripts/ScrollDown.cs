@@ -21,10 +21,10 @@ public class ScrollDown : MonoBehaviour
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         if (transform.position.y < min.y) {
             Destroy(gameObject);
-
         }
 
-        Vector2 movement = new Vector2(0, -1) * speed * Time.deltaTime;
-        transform.Translate(movement);
+        Vector2 pos = transform.position;
+
+        transform.position = new Vector3(pos.x, pos.y - speed * Time.deltaTime, 0);
     }
 }
