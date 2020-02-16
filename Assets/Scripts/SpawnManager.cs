@@ -9,8 +9,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject mud_prefab;
 
     [SerializeField] private GameObject sack_prefab;
+<<<<<<< HEAD
 
     [SerializeField] private GameObject cow_prefab;
+=======
+>>>>>>> 97a3c35979a6e1c60883dde4314788ede1660dab
     public int current_lvl; // TODO: Really weird??
     private float spawn_cooldown;
     private Queue<Wave> waves;
@@ -60,7 +63,6 @@ public class SpawnManager : MonoBehaviour
             case 1:
                 loadLevel1();
                 break;
-            
             case 2:
                 loadLevel2();
                 break;
@@ -176,5 +178,6 @@ public class SpawnManager : MonoBehaviour
     void loadLevel2()
     {
         waves = new Queue<Wave>();
+        waves.Enqueue(new Wave(3,0,fence_prefab,10));
     }
 }
