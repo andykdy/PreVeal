@@ -34,6 +34,11 @@ public class BabyCowScript : MonoBehaviour
         {
             gameOver.ShowButtons();
 
+            SpawnManager spawner = FindObjectOfType<SpawnManager>();
+            if (spawner != null) {
+            	spawner.EndGame();
+            }
+
             GameObject[] cows = GameObject.FindGameObjectsWithTag("follower_cow");
             foreach (GameObject cow in cows)
             {
