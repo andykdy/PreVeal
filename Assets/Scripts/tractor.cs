@@ -10,6 +10,8 @@ public class tractor : MonoBehaviour
 
     private int potatoes;
     private int score;
+    private float kill_down;
+    private float drag_time = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,16 +25,18 @@ public class tractor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeft -= Time.deltaTime;      
-    
-        //new_potato.GetComponent<RigibBody2D>().velocty = Vector.up;
+        timeLeft -= Time.deltaTime;
+        if (kill_down > 0)
+            kill_down -= Time.deltaTime;
+        if (drag_time > 0)
+        {
+            drag_time -= Time.deltaTime;
+            speed = 1f;
+        }
+        else
+            speed = 5f;
 
-        //getting position with which button
-        //returns -1 - 1, on which pos/neg button you press
-
-
-     
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKey(KeyCode.RightArrow))
+        if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKey(KeyCode.RightArrow)) && GameOver.isInputEnabled)
         {
 
             //Movement with what button direction * speed I want * Time.deltaTime to make it run per second
@@ -43,7 +47,7 @@ public class tractor : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKey(KeyCode.LeftArrow))
+        if ((Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKey(KeyCode.LeftArrow)) && GameOver.isInputEnabled)
         {
 
             //Movement with what button direction * speed I want * Time.deltaTime to make it run per second
@@ -69,7 +73,7 @@ public class tractor : MonoBehaviour
             transform.position.z);
 
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && potatoes > 0 && timeLeft < 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && potatoes > 0 && timeLeft < 0  && GameOver.isInputEnabled)
         {
             Instantiate(potato, transform.position, Quaternion.identity);
             potatoes -= 1;
@@ -90,6 +94,13 @@ public class tractor : MonoBehaviour
             }
             Destroy(other.gameObject);
         }
+        else if (other.gameObject.GetComponent<BabyCowScript>() != null && kill_down < 0)
+        {
+            kill_down = 0.5f;
+            ParticleSystem explosion = Instantiate(other.gameObject.GetComponent<BabyCowScript>().bloodBomb);
+            explosion.transform.position = other.gameObject.GetComponent<BabyCowScript>().transform.position;
+            other.gameObject.GetComponent<BabyCowScript>().AddHealth(-1);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col) {
@@ -98,7 +109,7 @@ public class tractor : MonoBehaviour
             potatoes += 5;
             Destroy(col.gameObject);
         }
-        else if (col.tag == "mud")
+        else if (col.tag == "fence")
         {
             if (potatoes > 2) {
                 potatoes -= 3;
@@ -107,7 +118,12 @@ public class tractor : MonoBehaviour
             {
                 potatoes = 0;
             }
+            Destroy(col.gameObject);
             
+        }
+        else if (col.tag == "mud")
+        {
+            drag_time = 5f;
         }
         else if (col.tag == "veal") {
             score++;

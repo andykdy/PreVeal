@@ -10,6 +10,10 @@ TagManager:
   - potato
   - potato_sack
   - fence
+  - game_over_text
+  - panel
+  - follower_cow
+  - game_over_container
   layers:
   - Default
   - TransparentFX
@@ -19,7 +23,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Obstacles
   - 
   - 
   - 

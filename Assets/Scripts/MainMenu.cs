@@ -9,4 +9,14 @@ public class MainMenu : MonoBehaviour
     {
         Application.LoadLevel("MainScene");
     }
+
+    public void LevelSelect()
+    {
+        Application.LoadLevel("LevelSelect");
+    }
+
+    public void Help()
+    {
+        Application.LoadLevel("HelpMenu");
+    }
 }

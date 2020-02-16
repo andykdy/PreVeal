@@ -29,26 +29,38 @@ public class BabyCowScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		float rot_dir = 0;
+		var gameOver = FindObjectOfType<GameOver>();
+        if (my_health == 0 && !gameOver.isShown())
+        {
+            gameOver.ShowButtons();
+
+            GameObject[] cows = GameObject.FindGameObjectsWithTag("follower_cow");
+            foreach (GameObject cow in cows)
+            {
+                Destroy(cow);
+            }
+
+            Destroy(gameObject);
+        }
+        float rot_dir = 0;
 		float cur_speed = 0;
-		if (Input.GetKey(KeyCode.S)) 
+		if (Input.GetKey(KeyCode.S) && GameOver.isInputEnabled) 
 			rot_dir = 180;
-		if (Input.GetKey(KeyCode.A)) 
+		if (Input.GetKey(KeyCode.A) && GameOver.isInputEnabled)
 			rot_dir = 90;
-		if (Input.GetKey(KeyCode.D)) 
+		if (Input.GetKey(KeyCode.D) && GameOver.isInputEnabled)
 			rot_dir = 270;
 		if (stunned_cd < 0.0f)
 		{
 			gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, Quaternion.Euler(0,0,rot_dir), 10f);
-			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) ||
-			    Input.GetKey(KeyCode.D))
+			if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) ||
+			    Input.GetKey(KeyCode.D)) && GameOver.isInputEnabled)
 			{
 				cur_speed = speed * Time.deltaTime;
 				transform.Translate(Vector2.up * cur_speed);
 			}
 
 			Vector2 rot_vec = gameObject.transform.up;
-			Debug.Log(rot_vec);
 			foreach (FollowerCow fc in FindObjectsOfType<FollowerCow>())
 			{
 				float angle = Vector2.Angle(rot_vec, fc.transform.position - gameObject.transform.position);
@@ -87,19 +99,7 @@ public class BabyCowScript : MonoBehaviour
 			my_health--;
             ParticleSystem explosion = Instantiate(bloodBomb);
             explosion.transform.position = transform.position;
-            if (my_health == 0) {
-            	var gameOver = FindObjectOfType<GameOver>();
-            	gameOver.ShowButtons();
-
-				// TODO show game over when cow dies
-				GameObject[] cows = GameObject.FindGameObjectsWithTag("follower_cow");
-				foreach (GameObject cow in cows) {
-					Destroy(cow);
-				}
-
-				Destroy(gameObject);
-			}
-		}
+        }
 
 		if (col.tag == "mud") {
 			speed = 0.5f;
