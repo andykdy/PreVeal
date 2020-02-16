@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1579141504514419027}
   - component: {fileID: 1579141504514419024}
   - component: {fileID: 1579141504514419025}
-  - component: {fileID: 3262790256740961123}
+  - component: {fileID: 8876558220719714500}
   m_Layer: 0
   m_Name: Potato
   m_TagString: potato
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1579141504514419022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.416, y: -1.914, z: -6.901785}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 5709ac05ac3eb41d18808c2e6b072c0e, type: 3}
   m_Color: {r: 0.64367956, g: 0.9433962, b: 0.10679954, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
---- !u!58 &3262790256740961123
-CircleCollider2D:
+--- !u!70 &8876558220719714500
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,6 +109,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.08
+  m_Offset: {x: 0.010448009, y: -0.002985239}
+  m_Size: {x: 0.22148997, y: 0.30507421}
+  m_Direction: 0
