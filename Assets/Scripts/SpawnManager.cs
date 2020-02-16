@@ -87,6 +87,7 @@ public class SpawnManager : MonoBehaviour
     {
         waves = new Queue<Wave>();
         waves.Enqueue(new Wave(2.5f,0,mud_prefab,2));
+        waves.Enqueue(new Wave(-1.35f,0,sack_prefab,1));
         waves.Enqueue(new Wave(2.5f,0,fence_prefab,2));
         
         waves.Enqueue(new Wave(-2.5f,0,fence_prefab,0));
@@ -139,8 +140,12 @@ public class SpawnManager : MonoBehaviour
         waves.Enqueue(new Wave(-2.75f,0,fence_prefab,2));
         
         waves.Enqueue(new Wave(0.0f, 0, mud_prefab, 2));
+        waves.Enqueue(new Wave(-0.75f,0,sack_prefab,0));
         waves.Enqueue(new Wave(2.5f,0,mud_prefab,2));
+        
+        waves.Enqueue(new Wave(-1.4f,0,sack_prefab,0));
         waves.Enqueue(new Wave(-1.4f,0,mud_prefab,2));
+        waves.Enqueue(new Wave(0.0f,0,sack_prefab,0));
         waves.Enqueue(new Wave(0.0f, 0, mud_prefab, 0));
         waves.Enqueue(new Wave(-1.8f, 0, cow_prefab, 3));
         waves.Enqueue(new Wave(-1.75f,0,mud_prefab,0));
@@ -154,8 +159,6 @@ public class SpawnManager : MonoBehaviour
         waves.Enqueue(new Wave(-2.25f,0,fence_prefab,2));
         
         
-        
-        
         waves.Enqueue(new Wave(-2.75f,0,fence_prefab,0));
         waves.Enqueue(new Wave(-1.4f,0,fence_prefab,0));
         waves.Enqueue(new Wave(-0.0f, 0, fence_prefab, 0));
@@ -163,6 +166,8 @@ public class SpawnManager : MonoBehaviour
         
         waves.Enqueue(new Wave(-2.5f, 180, cow_prefab,0));
         waves.Enqueue(new Wave(0.6f, 90, fence_prefab, 0));
+        
+        waves.Enqueue(new Wave(1.35f,0,sack_prefab,0));
         waves.Enqueue(new Wave(2.25f,90,fence_prefab,1.5f));
         waves.Enqueue(new Wave(0.6f, 90, fence_prefab, 0));
         waves.Enqueue(new Wave(-1.8f, 90, fence_prefab, 0));
@@ -170,12 +175,68 @@ public class SpawnManager : MonoBehaviour
         waves.Enqueue(new Wave(2.25f,90,fence_prefab,1));
         
         waves.Enqueue(new Wave(-1.4f,0,fence_prefab,0));
+        waves.Enqueue(new Wave(2.75f,0,fence_prefab,2));
+        
+        waves.Enqueue(new Wave(-2.55f,0,sack_prefab,2));
+        
+        waves.Enqueue(new Wave(-2.75f,0,fence_prefab,0));
+        waves.Enqueue(new Wave(-1.4f,0,fence_prefab,0));
+        waves.Enqueue(new Wave(-0.0f, 0, fence_prefab, 0));
+        waves.Enqueue(new Wave(1.4f,0,sack_prefab,0));
         waves.Enqueue(new Wave(2.75f,0,fence_prefab,1));
         
+        waves.Enqueue(new Wave(0.6f, 90, fence_prefab, 0));
+        waves.Enqueue(new Wave(2.25f,90,fence_prefab,1.5f));
+        waves.Enqueue(new Wave(0.6f, 90, fence_prefab, 0));
+        waves.Enqueue(new Wave(2.25f,90,fence_prefab,1.5f));
+        waves.Enqueue(new Wave(0.6f, 90, fence_prefab, 0));
+        waves.Enqueue(new Wave(2.25f,90,fence_prefab,1));
         
+        waves.Enqueue(new Wave(-2.75f,0,fence_prefab,0));
+        waves.Enqueue(new Wave(-1.4f,0,fence_prefab,0));
+        waves.Enqueue(new Wave(-0.0f, 0, fence_prefab, 0));
+        waves.Enqueue(new Wave(2.75f,0,fence_prefab,1.5f));
         
+        waves.Enqueue(new Wave(0,0,sack_prefab,1.5f));
         
+        waves.Enqueue(new Wave(2.75f,0,fence_prefab,0));
+        waves.Enqueue(new Wave(1.4f,0,fence_prefab,0));
+        waves.Enqueue(new Wave(0.0f, 0, fence_prefab, 0));
+        waves.Enqueue(new Wave(-2.75f,0,fence_prefab,1));
         
+        waves.Enqueue(new Wave(-0.6f, 90, fence_prefab, 0));
+        waves.Enqueue(new Wave(-2.25f,90,fence_prefab,1.5f));
+        waves.Enqueue(new Wave(-1.4f,0,sack_prefab,0));
+        waves.Enqueue(new Wave(-0.6f, 90, fence_prefab, 0));
+        waves.Enqueue(new Wave(-2.25f,90,fence_prefab,1.5f));
+        waves.Enqueue(new Wave(-0.6f, 90, fence_prefab, 0));
+        waves.Enqueue(new Wave(-2.25f,90,fence_prefab,1));
+        
+        waves.Enqueue(new Wave(-0.75f,90,fence_prefab,0));
+        
+        waves.Enqueue(new Wave(-0.75f,90,fence_prefab,0));
+        waves.Enqueue(new Wave(-2.25f,90,fence_prefab,0));
+        waves.Enqueue(new Wave(-1.5f, 0, cow_prefab, 0));
+        waves.Enqueue(new Wave(1.5f, 180, cow_prefab, 0));
+        waves.Enqueue(new Wave(2.5f,0,sack_prefab,1));
+        
+
+        waves.Enqueue(new Wave(-1.5f, 90, cow_prefab, 2));
+        waves.Enqueue(new Wave(-2.5f,0,fence_prefab,0));
+        waves.Enqueue(new Wave(-1.9f,0,sack_prefab,2));
+        waves.Enqueue(new Wave(-1.35f,0,fence_prefab,1.5f));
+        
+        waves.Enqueue(new Wave(2.5f,0,fence_prefab,0));
+        waves.Enqueue(new Wave(1.35f, 0, fence_prefab, 0));
+        waves.Enqueue(new Wave(-1.1f,0,mud_prefab,2));
+        
+        waves.Enqueue(new Wave(2.5f,0,cow_prefab,0.5f));
+        waves.Enqueue(new Wave(1.35f,0,sack_prefab,1));
+        
+        waves.Enqueue(new Wave(-2.5f,0,fence_prefab,0));
+        waves.Enqueue(new Wave(-1.35f,0,fence_prefab,2));
+        
+        waves.Enqueue(new Wave(1.5f,0,fence_prefab,0.4f));
         
         waves.Enqueue(new Wave(0,0,finish_prefab,0));
     }
