@@ -199,7 +199,6 @@ public class SpawnManager : MonoBehaviour
         
         waves.Enqueue(new Wave(0,0,sack_prefab,1.5f));
         
-        
         waves.Enqueue(new Wave(2.75f,0,fence_prefab,0));
         waves.Enqueue(new Wave(1.4f,0,fence_prefab,0));
         waves.Enqueue(new Wave(0.0f, 0, fence_prefab, 0));
