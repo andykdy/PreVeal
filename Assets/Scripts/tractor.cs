@@ -10,6 +10,7 @@ public class tractor : MonoBehaviour
 
     private int potatoes;
     private int score;
+    private float kill_down = 20;
 
     // Start is called before the first frame update
     void Start()
@@ -23,15 +24,17 @@ public class tractor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeft -= Time.deltaTime;      
-    
+        timeLeft -= Time.deltaTime;
+        if (kill_down < 20)
+            kill_down += Time.deltaTime;
+
         //new_potato.GetComponent<RigibBody2D>().velocty = Vector.up;
 
         //getting position with which button
         //returns -1 - 1, on which pos/neg button you press
 
 
-     
+
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKey(KeyCode.RightArrow))
         {
 
@@ -89,6 +92,13 @@ public class tractor : MonoBehaviour
                 FindObjectOfType<BabyCowScript>().AddScore(-1);
             }
             Destroy(other.gameObject);
+        }
+        else if (other.gameObject.GetComponent<BabyCowScript>() != null && kill_down > 2)
+        {
+            kill_down = 0;
+            ParticleSystem explosion = Instantiate(other.gameObject.GetComponent<BabyCowScript>().bloodBomb);
+            explosion.transform.position = other.gameObject.GetComponent<BabyCowScript>().transform.position;
+            other.gameObject.GetComponent<BabyCowScript>().AddHealth(-1);
         }
     }
 

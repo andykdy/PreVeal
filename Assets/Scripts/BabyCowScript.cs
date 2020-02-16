@@ -29,7 +29,20 @@ public class BabyCowScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		float rot_dir = 0;
+        if (my_health == 0)
+        {
+            var gameOver = FindObjectOfType<GameOver>();
+            gameOver.ShowButtons();
+
+            GameObject[] cows = GameObject.FindGameObjectsWithTag("follower_cow");
+            foreach (GameObject cow in cows)
+            {
+                Destroy(cow);
+            }
+
+            Destroy(gameObject);
+        }
+        float rot_dir = 0;
 		float cur_speed = 0;
 		if (Input.GetKey(KeyCode.S)) 
 			rot_dir = 180;
@@ -85,20 +98,6 @@ public class BabyCowScript : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.tag == "potato") {
 			my_health--;
-            ParticleSystem explosion = Instantiate(bloodBomb);
-            explosion.transform.position = transform.position;
-            if (my_health == 0) {
-            	var gameOver = FindObjectOfType<GameOver>();
-            	gameOver.ShowButtons();
-
-				// TODO show game over when cow dies
-				GameObject[] cows = GameObject.FindGameObjectsWithTag("follower_cow");
-				foreach (GameObject cow in cows) {
-					Destroy(cow);
-				}
-
-				Destroy(gameObject);
-			}
 		}
 
 		if (col.tag == "mud") {

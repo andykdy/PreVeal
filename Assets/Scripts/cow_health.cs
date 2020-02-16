@@ -19,6 +19,10 @@ public class cow_health : MonoBehaviour
         if (player != null)
             my_text.text = "" + player.GetHealth();
         else
+        {
             my_text.text = "0";
+            var gameOver = FindObjectOfType<GameOver>();
+            gameOver.ShowButtons();
+        }
     }
 }
