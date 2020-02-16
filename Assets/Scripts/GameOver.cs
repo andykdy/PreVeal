@@ -22,6 +22,7 @@ public class GameOver : MonoBehaviour
 	}
 
 	public void HideButtons() {
+		Time.timeScale = 1;
 		panel.SetActive(false);
 		game_object_text.SetActive(false);
 		//hide each button
@@ -32,6 +33,7 @@ public class GameOver : MonoBehaviour
 	}
 
 	public void ShowButtons() {
+		Time.timeScale = 0;
 		panel.SetActive(true);
 		game_object_text.SetActive(true);
 		//show each button
