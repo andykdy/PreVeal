@@ -97,7 +97,9 @@ public class BabyCowScript : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.tag == "potato") {
 			my_health--;
-		}
+            ParticleSystem explosion = Instantiate(bloodBomb);
+            explosion.transform.position = transform.position;
+        }
 
 		if (col.tag == "mud") {
 			speed = 0.5f;

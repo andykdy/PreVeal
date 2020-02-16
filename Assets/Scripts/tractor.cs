@@ -31,7 +31,7 @@ public class tractor : MonoBehaviour
         if (drag_time > 0)
         {
             drag_time -= Time.deltaTime;
-            speed = 2f;
+            speed = 1f;
         }
         else
             speed = 5f;
