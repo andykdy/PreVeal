@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 682263807766241351}
   m_Layer: 0
   m_Name: Follower
-  m_TagString: cow
+  m_TagString: follower_cow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

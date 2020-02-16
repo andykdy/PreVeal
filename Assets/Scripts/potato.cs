@@ -31,7 +31,7 @@ public class potato : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col) {
 
-        if (col.tag == "cow") {
+        if (col.tag == "cow" || col.tag == "follower_cow") {
             Destroy(gameObject);
         }
 

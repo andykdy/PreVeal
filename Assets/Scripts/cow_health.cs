@@ -16,7 +16,7 @@ public class cow_health : MonoBehaviour
     void Update()
     {
         BabyCowScript player = FindObjectOfType<BabyCowScript>();
-        Debug.Log(player.GetHealth());
-        my_text.text = "" + player.GetHealth();
+        if (player != null)
+            my_text.text = "" + player.GetHealth();
     }
 }
