@@ -10,6 +10,9 @@ TagManager:
   - potato
   - potato_sack
   - fence
+  - game_over_text
+  - panel
+  - follower_cow
   layers:
   - Default
   - TransparentFX
@@ -44,6 +47,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 3884318853
+    locked: 0
+  - name: obstacles
+    uniqueID: 1488939747
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

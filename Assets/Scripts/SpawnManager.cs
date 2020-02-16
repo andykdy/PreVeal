@@ -9,11 +9,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject mud_prefab;
 
     [SerializeField] private GameObject sack_prefab;
-<<<<<<< HEAD
 
     [SerializeField] private GameObject cow_prefab;
-=======
->>>>>>> 97a3c35979a6e1c60883dde4314788ede1660dab
     public int current_lvl; // TODO: Really weird??
     private float spawn_cooldown;
     private Queue<Wave> waves;
@@ -77,7 +74,7 @@ public class SpawnManager : MonoBehaviour
         if (waves.Count > 0 && spawn_cooldown < 0.0f)
         {
             Wave current_wave = waves.Dequeue();
-            Instantiate(current_wave.GetObject(), new Vector3(current_wave.GetPosition(), 6, -2),
+            Instantiate(current_wave.GetObject(), new Vector3(current_wave.GetPosition(), 6, -10),
                 Quaternion.Euler(0, 0, current_wave.GetRotation()));
             spawn_cooldown = current_wave.GetDelay();
         }
@@ -87,6 +84,7 @@ public class SpawnManager : MonoBehaviour
     void loadLevel1()
     {
         waves = new Queue<Wave>();
+        waves.Enqueue(new Wave(2.5f,0,mud_prefab,2));
         waves.Enqueue(new Wave(2.5f,0,fence_prefab,2));
         
         waves.Enqueue(new Wave(-2.5f,0,fence_prefab,0));
