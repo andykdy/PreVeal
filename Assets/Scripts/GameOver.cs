@@ -44,7 +44,6 @@ public class GameOver : MonoBehaviour
 			b.gameObject.SetActive(true);
 		}
 		Animation anim = gameOver.GetComponent<Animation>();
-		Debug.Log("playing");
 		anim.Play("game_over");
 	}
 

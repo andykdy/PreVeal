@@ -10,7 +10,8 @@ public class tractor : MonoBehaviour
 
     private int potatoes;
     private int score;
-    private float kill_down = 20;
+    private float kill_down;
+    private float drag_time = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,16 +26,16 @@ public class tractor : MonoBehaviour
     void Update()
     {
         timeLeft -= Time.deltaTime;
-        if (kill_down < 20)
-            kill_down += Time.deltaTime;
+        if (kill_down > 0)
+            kill_down -= Time.deltaTime;
+        if (drag_time > 0)
+        {
+            drag_time -= Time.deltaTime;
+            speed = 2f;
+        }
+        else
+            speed = 5f;
 
-        //new_potato.GetComponent<RigibBody2D>().velocty = Vector.up;
-
-        //getting position with which button
-        //returns -1 - 1, on which pos/neg button you press
-
-
-     
         if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKey(KeyCode.RightArrow)) && GameOver.isInputEnabled)
         {
 
@@ -93,9 +94,9 @@ public class tractor : MonoBehaviour
             }
             Destroy(other.gameObject);
         }
-        else if (other.gameObject.GetComponent<BabyCowScript>() != null && kill_down > 0.5)
+        else if (other.gameObject.GetComponent<BabyCowScript>() != null && kill_down < 0)
         {
-            kill_down = 0;
+            kill_down = 0.5f;
             ParticleSystem explosion = Instantiate(other.gameObject.GetComponent<BabyCowScript>().bloodBomb);
             explosion.transform.position = other.gameObject.GetComponent<BabyCowScript>().transform.position;
             other.gameObject.GetComponent<BabyCowScript>().AddHealth(-1);
@@ -108,7 +109,7 @@ public class tractor : MonoBehaviour
             potatoes += 5;
             Destroy(col.gameObject);
         }
-        else if (col.tag == "mud")
+        else if (col.tag == "fence")
         {
             if (potatoes > 2) {
                 potatoes -= 3;
@@ -117,7 +118,12 @@ public class tractor : MonoBehaviour
             {
                 potatoes = 0;
             }
+            Destroy(col.gameObject);
             
+        }
+        else if (col.tag == "mud")
+        {
+            drag_time = 5f;
         }
         else if (col.tag == "veal") {
             score++;
