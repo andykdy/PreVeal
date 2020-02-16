@@ -93,7 +93,7 @@ public class tractor : MonoBehaviour
             }
             Destroy(other.gameObject);
         }
-        else if (other.gameObject.GetComponent<BabyCowScript>() != null && kill_down > 2)
+        else if (other.gameObject.GetComponent<BabyCowScript>() != null && kill_down > 0.5)
         {
             kill_down = 0;
             ParticleSystem explosion = Instantiate(other.gameObject.GetComponent<BabyCowScript>().bloodBomb);
