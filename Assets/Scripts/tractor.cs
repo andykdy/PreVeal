@@ -10,7 +10,7 @@ public class tractor : MonoBehaviour
 
     private int potatoes;
     private int score;
-    private float kill_down;
+    private float kill_down = -1f;
     private float drag_time = 0f;
 
     // Start is called before the first frame update
