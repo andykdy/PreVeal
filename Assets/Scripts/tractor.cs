@@ -36,7 +36,7 @@ public class tractor : MonoBehaviour
         else
             speed = 5f;
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKey(KeyCode.RightArrow))
+        if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKey(KeyCode.RightArrow)) && GameOver.isInputEnabled)
         {
 
             //Movement with what button direction * speed I want * Time.deltaTime to make it run per second
@@ -47,7 +47,7 @@ public class tractor : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKey(KeyCode.LeftArrow))
+        if ((Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKey(KeyCode.LeftArrow)) && GameOver.isInputEnabled)
         {
 
             //Movement with what button direction * speed I want * Time.deltaTime to make it run per second
@@ -73,7 +73,7 @@ public class tractor : MonoBehaviour
             transform.position.z);
 
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && potatoes > 0 && timeLeft < 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && potatoes > 0 && timeLeft < 0  && GameOver.isInputEnabled)
         {
             Instantiate(potato, transform.position, Quaternion.identity);
             potatoes -= 1;

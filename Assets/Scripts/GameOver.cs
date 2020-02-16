@@ -8,6 +8,8 @@ public class GameOver : MonoBehaviour
     private Button[] buttons;
 	private GameObject panel;
 	private GameObject game_object_text;
+	public GameObject gameOver;
+	public static bool isInputEnabled = true;
 
 	void Awake(){
 		
@@ -22,7 +24,7 @@ public class GameOver : MonoBehaviour
 	}
 
 	public void HideButtons() {
-		Time.timeScale = 1;
+		isInputEnabled = true;
 		panel.SetActive(false);
 		game_object_text.SetActive(false);
 		//hide each button
@@ -33,7 +35,7 @@ public class GameOver : MonoBehaviour
 	}
 
 	public void ShowButtons() {
-		Time.timeScale = 0;
+		isInputEnabled = false;
 		panel.SetActive(true);
 		game_object_text.SetActive(true);
 		//show each button
@@ -41,9 +43,23 @@ public class GameOver : MonoBehaviour
 		{
 			b.gameObject.SetActive(true);
 		}
+		Animation anim = gameOver.GetComponent<Animation>();
+		anim.Play("game_over");
+	}
+
+	public bool isShown() {
+		return panel.activeSelf && game_object_text.activeSelf;
 	}
 	
     public void Restart() {
     	Application.LoadLevel("MainScene");
     }
+
+	public void MainMenu() {
+		Application.LoadLevel("MainMenu");
+	}
+
+	public void Quit() {
+		Application.Quit();
+	}
 }
