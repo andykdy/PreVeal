@@ -60,7 +60,6 @@ public class SpawnManager : MonoBehaviour
             case 1:
                 loadLevel1();
                 break;
-            
             case 2:
                 loadLevel2();
                 break;
