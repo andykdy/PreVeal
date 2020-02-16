@@ -1,19 +1,37 @@
 fileFormatVersion: 2
-guid: 017dedbb33a2148d4a4e0f59678b137a
+guid: 91301a7acaede4e19aea65a30cc5bff4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8131550846101213921
-    second: Redcollarbabbycowup-Sheet_0
+      213: -3774584804859473903
+    second: babbycowup-Sheet_0
   - first:
-      213: 5323480162635466663
-    second: Redcollarbabbycowup-Sheet_1
+      213: 4985299638006284071
+    second: babbycowup-Sheet_1
   - first:
-      213: -8093142398756170762
-    second: Redcollarbabbycowup-Sheet_2
+      213: -9210811521512417530
+    second: babbycowup-Sheet_2
   - first:
-      213: -441417720214387960
-    second: Redcollarbabbycowup-Sheet_3
+      213: 3348070933620450834
+    second: babbycowup-Sheet_3
+  - first:
+      213: -4168832482879915259
+    second: babbycowup-Sheet_4
+  - first:
+      213: 8783028282085334055
+    second: babbycowup-Sheet_5
+  - first:
+      213: 1043437808340763349
+    second: babbycowup-Sheet_0
+  - first:
+      213: -5339970600557170090
+    second: babbycowup-Sheet_1
+  - first:
+      213: -1013644542903548492
+    second: babbycowup-Sheet_2
+  - first:
+      213: -3413628063172799448
+    second: babbycowup-Sheet_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -98,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Redcollarbabbycowup-Sheet_0
+      name: babbycowup-Sheet_0
       rect:
         serializedVersion: 2
         x: 13
@@ -112,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1d2c19969de62f80800000000000000
-      internalID: -8131550846101213921
+      spriteID: 5d20d5788290b7e00800000000000000
+      internalID: 1043437808340763349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Redcollarbabbycowup-Sheet_1
+      name: babbycowup-Sheet_1
       rect:
         serializedVersion: 2
         x: 77
@@ -133,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a7c9beb00dc0e940800000000000000
-      internalID: 5323480162635466663
+      spriteID: 652b2caf70d94e5b0800000000000000
+      internalID: -5339970600557170090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Redcollarbabbycowup-Sheet_2
+      name: babbycowup-Sheet_2
       rect:
         serializedVersion: 2
         x: 140
@@ -154,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f35c7d1ed16faf80800000000000000
-      internalID: -8093142398756170762
+      spriteID: 4b588b3a8afcee1f0800000000000000
+      internalID: -1013644542903548492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Redcollarbabbycowup-Sheet_3
+      name: babbycowup-Sheet_3
       rect:
         serializedVersion: 2
         x: 204
@@ -175,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8030f051ce4cfd9f0800000000000000
-      internalID: -441417720214387960
+      spriteID: 824d74bdc5b50a0d0800000000000000
+      internalID: -3413628063172799448
       vertices: []
       indices: 
       edges: []
