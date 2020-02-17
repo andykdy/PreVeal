@@ -148,6 +148,10 @@ MonoBehaviour:
   speed: 5
   potato: {fileID: 1579141504514419022, guid: e9917a7bf6ac6fc419e61da99abdefd0, type: 3}
   timeLeft: 0.5
+  cowAudio: {fileID: 3380016830167663374, guid: 237392d5908662c1ab31a2435476cae5,
+    type: 3}
+  gunAudio: {fileID: 9057852755931027809, guid: 394f8a1cd91176dbbb6fc0386a76b2c7,
+    type: 3}
 --- !u!95 &4945105241780382450
 Animator:
   serializedVersion: 3

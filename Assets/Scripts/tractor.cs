@@ -7,17 +7,23 @@ public class tractor : MonoBehaviour
     public float speed;
     public GameObject potato;
     public float timeLeft;
+    public GameObject cowAudio;
+    public GameObject gunAudio;
 
     private int potatoes;
     private int score;
     private float kill_down = -1f;
     private float drag_time = 0f;
+    private GameObject cowsfx;
+    private GameObject gunsfx;
 
     // Start is called before the first frame update
     void Start()
     {
         potatoes = 3;
         score = 0;
+        cowsfx = Instantiate(cowAudio);
+        gunsfx = Instantiate(gunAudio);
     }
 
 
@@ -76,6 +82,7 @@ public class tractor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && potatoes > 0 && timeLeft < 0  && GameOver.isInputEnabled)
         {
             Instantiate(potato, transform.position, Quaternion.identity);
+            gunsfx.GetComponent<AudioSource>().Play();
             potatoes -= 1;
             timeLeft = 0.5f;
         }
@@ -86,6 +93,7 @@ public class tractor : MonoBehaviour
         if (other.gameObject.GetComponent<FollowerCow>() != null)
         {
             FollowerCow cow = other.gameObject.GetComponent<FollowerCow>();
+            cowsfx.GetComponent<AudioSource>().Play();
             ParticleSystem explosion = Instantiate(cow.bloodBomb);
             explosion.transform.position = transform.position;
             if (cow.GetState() == FollowerCow.CowState.Following)
@@ -97,6 +105,7 @@ public class tractor : MonoBehaviour
         else if (other.gameObject.GetComponent<BabyCowScript>() != null && kill_down < 0)
         {
             kill_down = 0.5f;
+            cowsfx.GetComponent<AudioSource>().Play();
             ParticleSystem explosion = Instantiate(other.gameObject.GetComponent<BabyCowScript>().bloodBomb);
             explosion.transform.position = other.gameObject.GetComponent<BabyCowScript>().transform.position;
             other.gameObject.GetComponent<BabyCowScript>().AddHealth(-1);
