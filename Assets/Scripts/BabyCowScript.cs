@@ -32,8 +32,6 @@ public class BabyCowScript : MonoBehaviour
 		var gameOver = FindObjectOfType<GameOver>();
         if (my_health == 0 && !gameOver.isShown())
         {
-            gameOver.ShowButtons();
-
             SpawnManager spawner = FindObjectOfType<SpawnManager>();
             if (spawner != null) {
             	spawner.EndGame();
@@ -94,7 +92,7 @@ public class BabyCowScript : MonoBehaviour
 
 		transform.position = new Vector3(
 			Mathf.Clamp(transform.position.x, left, right),
-			Mathf.Clamp(transform.position.y, top + 1, bottom),
+			Mathf.Clamp(transform.position.y, top + 1, bottom - 1),
 			transform.position.z);
 		stunned_cd -= Time.deltaTime;
 	}
@@ -116,6 +114,11 @@ public class BabyCowScript : MonoBehaviour
 			stunned_cd = stun_timer;
 			
 			//gameObject.GetComponent<Rigidbody2D>().addForce(transform.down * slowModifier);
+		}
+		if (col.tag == "finish")
+		{
+			var gameOver = FindObjectOfType<GameOver>();
+			gameOver.CowWins();
 		}
 	}
 
