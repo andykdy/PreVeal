@@ -101,6 +101,7 @@ public class BabyCowScript : MonoBehaviour
 		if (col.tag == "potato") {
 			my_health--;
             ParticleSystem explosion = Instantiate(bloodBomb);
+			explosion.GetComponent<AudioSource>().Play();
             explosion.transform.position = transform.position;
         }
 
