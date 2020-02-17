@@ -92,7 +92,7 @@ public class BabyCowScript : MonoBehaviour
 
 		transform.position = new Vector3(
 			Mathf.Clamp(transform.position.x, left, right),
-			Mathf.Clamp(transform.position.y, top + 1, bottom),
+			Mathf.Clamp(transform.position.y, top + 1, bottom - 1),
 			transform.position.z);
 		stunned_cd -= Time.deltaTime;
 	}
