@@ -78,6 +78,8 @@ public class FollowerCow : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "potato") {
             ParticleSystem explosion = Instantiate(bloodBomb);
+            explosion.GetComponent<AudioSource>().Play();
+
             explosion.transform.position = transform.position;
             if (cur_state == CowState.Following)
             {
